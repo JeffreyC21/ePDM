@@ -57,7 +57,7 @@ void loop() {
   // Devices enabled by ECU over CAN
   while (Can0.available()) {
     Can0.read(deviceEnable);
-    // Mask 0x01 used to be for pumps but that will be switched directly by ECU due to PDM hardware shortcomings
+    
     digitalWrite(PUMP1_ENABLE, deviceEnable.buf[0] & 0x02);
     digitalWrite(PUMP2_ENABLE, deviceEnable.buf[0] & 0x04);
     digitalWrite(SDC_ENABLE, deviceEnable.buf[0] & 0x08);
